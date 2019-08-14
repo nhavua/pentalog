@@ -10,4 +10,9 @@ class DefaultController extends Controller
     {
         return $this->render('ProductBundle:Default:index.html.twig');
     }
+
+    public function homepageAction()
+    {
+        return $this->render('ProductBundle:Default:homepage.html.twig');
+    }
 }
