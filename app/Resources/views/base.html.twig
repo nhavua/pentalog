@@ -13,6 +13,11 @@
             </div>
         {% endfor %}
         {% block body %}{% endblock %}
+        <ul>
+            <li>
+                <a href="{{ path('product_homepage') }}">Back to Homepage</a>
+            </li>
+        </ul>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
