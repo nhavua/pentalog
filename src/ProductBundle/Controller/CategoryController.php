@@ -53,7 +53,7 @@ class CategoryController extends Controller
 
             $this->addFlash(
                 'notice',
-                'New category were created!'
+                'Success'
             );
 
             return $this->redirectToRoute('categories_show', array('id' => $category->getId()));
@@ -97,7 +97,7 @@ class CategoryController extends Controller
 
             $this->addFlash(
                 'notice',
-                'Your changes were saved!'
+                'Success'
             );
 
             return $this->redirectToRoute('categories_edit', array('id' => $category->getId()));
@@ -128,7 +128,7 @@ class CategoryController extends Controller
 
             $this->addFlash(
                 'notice',
-                'Your category were deleted!'
+                'Success'
             );
         }
 

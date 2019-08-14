@@ -53,7 +53,7 @@ class ProductController extends Controller
 
             $this->addFlash(
                 'notice',
-                'New product were created!'
+                'Success'
             );
 
             return $this->redirectToRoute('products_show', array('id' => $product->getId()));
@@ -97,7 +97,7 @@ class ProductController extends Controller
 
             $this->addFlash(
                 'notice',
-                'Your changes were saved!'
+                'Success'
             );
 
             return $this->redirectToRoute('products_edit', array('id' => $product->getId()));
@@ -129,7 +129,7 @@ class ProductController extends Controller
 
         $this->addFlash(
             'notice',
-            'Your product were deleted!'
+            'Success'
         );
 
         return $this->redirectToRoute('products_index');
