@@ -109,5 +109,10 @@ class Category
     {
         return $this->editionDate;
     }
+
+    public function __toString()
+    {
+        return (string) $this->name;
+    }
 }
 
