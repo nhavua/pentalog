@@ -21,19 +21,14 @@
                 <td>{% if category.creationDate %}{{ category.creationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if category.editionDate %}{{ category.editionDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('categories_show', { 'id': category.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('categories_edit', { 'id': category.id }) }}">edit</a>
-                        </li>
-                        <li>
+                    <div>
+                            <a href="{{ path('categories_show', { 'id': category.id }) }}"><i class="fa fa-eye"></i></a>
+                            <a href="{{ path('categories_edit', { 'id': category.id }) }}"><i class="fa fa-pencil-square-o"></i></a>
                             {{ form_start(deleteForms[category.id]) }}
-                                <input type="submit" value="Delete">
+                                <i class="fa fa-trash-o"></i>
+                                <input type="submit" class="btn btn-sm" value="Delete">
                             {{ form_end(deleteForms[category.id]) }}
-                        </li>
-                    </ul>
+                    </div>
                 </td>
             </tr>
         {% endfor %}

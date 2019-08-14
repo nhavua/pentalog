@@ -26,17 +26,12 @@
                 <td>{% if product.editionDate %}{{ product.editionDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
-                        <li>
-                            <a href="{{ path('products_show', { 'id': product.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('products_edit', { 'id': product.id }) }}">edit</a>
-                        </li>
-                        <li>
+                            <a href="{{ path('products_show', { 'id': product.id }) }}"><i class="fa fa-eye"></i></a>
+                            <a href="{{ path('products_edit', { 'id': product.id }) }}"><i class="fa fa-pencil-square-o"></i></a>
                             {{ form_start(deleteForms[product.id]) }}
+                            <i class="fa fa-trash-o"></i>
                                 <input type="submit" value="Delete">
                             {{ form_end(deleteForms[product.id]) }}
-                        </li>
                     </ul>
                 </td>
             </tr>
