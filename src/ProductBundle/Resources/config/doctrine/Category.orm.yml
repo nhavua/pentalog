@@ -16,4 +16,10 @@ ProductBundle\Entity\Category:
             type: datetime
         editionDate:
             type: datetime
+    oneToMany:
+        products:
+            targetEntity: Product
+            mappedBy: category
+            orphanRemoval: true,
+            cascade: ["persist", "remove"]
     lifecycleCallbacks: {  }

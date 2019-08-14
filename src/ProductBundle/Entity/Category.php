@@ -27,6 +27,11 @@ class Category
      */
     private $editionDate;
 
+    /**
+     * @var Product[]
+     *
+     */
+    private $products;
 
     /**
      * Get id
@@ -96,6 +101,25 @@ class Category
     public function setEditionDate($editionDate)
     {
         $this->editionDate = $editionDate;
+
+        return $this;
+    }
+
+    /**
+     * @return Product[]
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * @param Product[] $products
+     * @return self
+     */
+    public function setProducts($products)
+    {
+        $this->products = $products;
 
         return $this;
     }
