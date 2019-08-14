@@ -176,7 +176,7 @@ class Product
     /**
      * Set category
      *
-     * @param integer $category
+     * @param Category $category
      *
      * @return Product
      */
