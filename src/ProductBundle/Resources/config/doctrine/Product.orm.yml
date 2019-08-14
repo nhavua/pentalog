@@ -21,6 +21,9 @@ ProductBundle\Entity\Product:
             type: datetime
         editionDate:
             type: datetime
+    manyToOne:
         category:
-            type: integer
+            targetEntity: Category
+            inversedBy: products
+
     lifecycleCallbacks: {  }
