@@ -2,6 +2,7 @@
 
 namespace ProductBundle\Controller;
 
+use ProductBundle\Entity\Category;
 use ProductBundle\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -47,6 +48,7 @@ class ProductController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $product = $this->addHiddenFieldsFromParams($product);
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
@@ -149,5 +151,21 @@ class ProductController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * @param Product $product
+     * @return Product
+     */
+    private function addHiddenFieldsFromParams(Product $product)
+    {
+        if (isset($_GET['category'])) {
+            $category = $this->getDoctrine()->getRepository('ProductBundle:Category')->find($_GET['category']);
+            if ($category instanceof Category) {
+                $product->setCategory($category);
+            }
+        }
+
+        return $product;
     }
 }

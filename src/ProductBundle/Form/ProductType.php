@@ -18,8 +18,11 @@ class ProductType extends AbstractType
         $builder
             ->add('number')
             ->add('name')
-            ->add('price')
-            ->add('category');
+            ->add('price');
+
+        if (!isset($_GET['category'])) {
+            $builder->add('category');
+        }
 
         $builder->addEventListener(
             FormEvents::POST_SUBMIT,

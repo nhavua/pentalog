@@ -3,6 +3,7 @@
 namespace ProductBundle\Controller;
 
 use ProductBundle\Entity\Category;
+use ProductBundle\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -80,7 +81,7 @@ class CategoryController extends Controller
             if (!$entity instanceof Product) {
                 continue;
             }
-            $deleteForms[$entity->getId()] = $this->createDeleteForm($entity)->createView();
+            $deleteForms[$entity->getId()] = $this->createProductDeleteForm($entity)->createView();
         }
 
         $deleteForm = $this->createDeleteForm($category);
@@ -163,5 +164,21 @@ class CategoryController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * Creates a form to delete a product entity.
+     *
+     * @param Product $product The product entity
+     *
+     * @return \Symfony\Component\Form\Form|\Symfony\Component\Form\FormInterface
+     */
+    private function createProductDeleteForm(Product $product)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('products_delete', array('id' => $product->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+            ;
     }
 }

@@ -69,7 +69,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('products_new') }}">Create a new product</a>
+            <a href="{{ path('products_new', {'category' : category.id}) }}">Create a new product</a>
         </li>
     </ul>
 {% endblock %}
