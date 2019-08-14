@@ -51,6 +51,11 @@ class ProductController extends Controller
             $em->persist($product);
             $em->flush();
 
+            $this->addFlash(
+                'notice',
+                'New product were created!'
+            );
+
             return $this->redirectToRoute('products_show', array('id' => $product->getId()));
         }
 
@@ -90,6 +95,11 @@ class ProductController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'notice',
+                'Your changes were saved!'
+            );
+
             return $this->redirectToRoute('products_edit', array('id' => $product->getId()));
         }
 
@@ -116,6 +126,11 @@ class ProductController extends Controller
             $em->remove($product);
             $em->flush();
         }
+
+        $this->addFlash(
+            'notice',
+            'Your product were deleted!'
+        );
 
         return $this->redirectToRoute('products_index');
     }

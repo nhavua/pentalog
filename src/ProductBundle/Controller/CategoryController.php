@@ -51,6 +51,11 @@ class CategoryController extends Controller
             $em->persist($category);
             $em->flush();
 
+            $this->addFlash(
+                'notice',
+                'New category were created!'
+            );
+
             return $this->redirectToRoute('categories_show', array('id' => $category->getId()));
         }
 
@@ -90,6 +95,11 @@ class CategoryController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'notice',
+                'Your changes were saved!'
+            );
+
             return $this->redirectToRoute('categories_edit', array('id' => $category->getId()));
         }
 
@@ -115,6 +125,11 @@ class CategoryController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($category);
             $em->flush();
+
+            $this->addFlash(
+                'notice',
+                'Your category were deleted!'
+            );
         }
 
         return $this->redirectToRoute('categories_index');
