@@ -21,9 +21,14 @@ class CategoryController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $categories = $em->getRepository('ProductBundle:Category')->findAll();
+        $deleteForms = array();
 
+        foreach ($categories as $entity) {
+            $deleteForms[$entity->getId()] = $this->createDeleteForm($entity)->createView();
+        }
         return $this->render('category/index.html.twig', array(
             'categories' => $categories,
+            'deleteForms' => $deleteForms,
         ));
     }
 
@@ -116,6 +121,7 @@ class CategoryController extends Controller
     private function createDeleteForm(Category $category)
     {
         return $this->createFormBuilder()
+            ->setAttribute('name', 'delete')
             ->setAction($this->generateUrl('categories_delete', array('id' => $category->getId())))
             ->setMethod('DELETE')
             ->getForm()

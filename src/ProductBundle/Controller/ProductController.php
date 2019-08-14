@@ -21,9 +21,14 @@ class ProductController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $products = $em->getRepository('ProductBundle:Product')->findAll();
+        $deleteForms = array();
 
+        foreach ($products as $entity) {
+            $deleteForms[$entity->getId()] = $this->createDeleteForm($entity)->createView();
+        }
         return $this->render('product/index.html.twig', array(
             'products' => $products,
+            'deleteForms' => $deleteForms,
         ));
     }
 

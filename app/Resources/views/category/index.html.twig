@@ -28,6 +28,11 @@
                         <li>
                             <a href="{{ path('categories_edit', { 'id': category.id }) }}">edit</a>
                         </li>
+                        <li>
+                            {{ form_start(deleteForms[category.id]) }}
+                                <input type="submit" value="Delete">
+                            {{ form_end(deleteForms[category.id]) }}
+                        </li>
                     </ul>
                 </td>
             </tr>
