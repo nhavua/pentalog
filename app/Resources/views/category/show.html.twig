@@ -24,17 +24,52 @@
         </tbody>
     </table>
 
+    <h2>Products list</h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Number</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Creationdate</th>
+            <th>Editiondate</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td><a href="{{ path('products_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
+                <td>{{ product.number }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{% if product.creationDate %}{{ product.creationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if product.editionDate %}{{ product.editionDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('products_show', { 'id': product.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('products_edit', { 'id': product.id }) }}">edit</a>
+                        </li>
+                        <li>
+                            {{ form_start(deleteForms[product.id]) }}
+                            <input type="submit" value="Delete">
+                            {{ form_end(deleteForms[product.id]) }}
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
     <ul>
         <li>
-            <a href="{{ path('categories_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('categories_edit', { 'id': category.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
+            <a href="{{ path('products_new') }}">Create a new product</a>
         </li>
     </ul>
 {% endblock %}

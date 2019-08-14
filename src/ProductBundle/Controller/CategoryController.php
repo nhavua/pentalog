@@ -72,11 +72,24 @@ class CategoryController extends Controller
      */
     public function showAction(Category $category)
     {
+        $em = $this->getDoctrine()->getManager();
+        $products = $em->getRepository('ProductBundle:Product')->findBy(['category' => $category]);
+        $deleteForms = array();
+
+        foreach ($products as $entity) {
+            if (!$entity instanceof Product) {
+                continue;
+            }
+            $deleteForms[$entity->getId()] = $this->createDeleteForm($entity)->createView();
+        }
+
         $deleteForm = $this->createDeleteForm($category);
 
         return $this->render('category/show.html.twig', array(
             'category' => $category,
             'delete_form' => $deleteForm->createView(),
+            'products' => $products,
+            'deleteForms' => $deleteForms,
         ));
     }
 
