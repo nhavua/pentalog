@@ -2,6 +2,10 @@ product_products:
     resource: "@ProductBundle/Resources/config/routing/product.yml"
     prefix:   /products
 
+product_categories:
+    resource: "@ProductBundle/Resources/config/routing/category.yml"
+    prefix:   /categories
+
 product_homepage:
     path:     /
     defaults: { _controller: ProductBundle:Default:homepage }
