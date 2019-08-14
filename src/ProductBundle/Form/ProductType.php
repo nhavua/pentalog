@@ -14,7 +14,9 @@ class ProductType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('number')->add('name')->add('price')->add('creationDate')->add('editionDate')->add('category');
-    }/**
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
@@ -31,6 +33,4 @@ class ProductType extends AbstractType
     {
         return 'productbundle_product';
     }
-
-
 }

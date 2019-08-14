@@ -24,6 +24,9 @@ class ProductController extends Controller
         $deleteForms = array();
 
         foreach ($products as $entity) {
+            if (!$entity instanceof Product) {
+                continue;
+            }
             $deleteForms[$entity->getId()] = $this->createDeleteForm($entity)->createView();
         }
         return $this->render('product/index.html.twig', array(
@@ -34,7 +37,8 @@ class ProductController extends Controller
 
     /**
      * Creates a new product entity.
-     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newAction(Request $request)
     {
@@ -58,7 +62,8 @@ class ProductController extends Controller
 
     /**
      * Finds and displays a product entity.
-     *
+     * @param Product $product
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction(Product $product)
     {
@@ -72,7 +77,9 @@ class ProductController extends Controller
 
     /**
      * Displays a form to edit an existing product entity.
-     *
+     * @param Request $request
+     * @param Product $product
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, Product $product)
     {
@@ -95,7 +102,9 @@ class ProductController extends Controller
 
     /**
      * Deletes a product entity.
-     *
+     * @param Request $request
+     * @param Product $product
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Product $product)
     {
@@ -116,7 +125,7 @@ class ProductController extends Controller
      *
      * @param Product $product The product entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return \Symfony\Component\Form\Form|\Symfony\Component\Form\FormInterface
      */
     private function createDeleteForm(Product $product)
     {

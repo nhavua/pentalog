@@ -24,6 +24,9 @@ class CategoryController extends Controller
         $deleteForms = array();
 
         foreach ($categories as $entity) {
+            if (!$entity instanceof Category) {
+                continue;
+            }
             $deleteForms[$entity->getId()] = $this->createDeleteForm($entity)->createView();
         }
         return $this->render('category/index.html.twig', array(
@@ -34,7 +37,8 @@ class CategoryController extends Controller
 
     /**
      * Creates a new category entity.
-     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newAction(Request $request)
     {
@@ -58,7 +62,8 @@ class CategoryController extends Controller
 
     /**
      * Finds and displays a category entity.
-     *
+     * @param Category $category
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction(Category $category)
     {
@@ -72,7 +77,9 @@ class CategoryController extends Controller
 
     /**
      * Displays a form to edit an existing category entity.
-     *
+     * @param Request $request
+     * @param Category $category
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, Category $category)
     {
@@ -95,7 +102,9 @@ class CategoryController extends Controller
 
     /**
      * Deletes a category entity.
-     *
+     * @param Request $request
+     * @param Category $category
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Category $category)
     {
@@ -116,7 +125,7 @@ class CategoryController extends Controller
      *
      * @param Category $category The category entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return \Symfony\Component\Form\Form|\Symfony\Component\Form\FormInterface
      */
     private function createDeleteForm(Category $category)
     {

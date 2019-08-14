@@ -14,7 +14,9 @@ class CategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name')->add('creationDate')->add('editionDate');
-    }/**
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
@@ -31,6 +33,4 @@ class CategoryType extends AbstractType
     {
         return 'productbundle_category';
     }
-
-
 }

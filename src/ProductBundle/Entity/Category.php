@@ -115,4 +115,3 @@ class Category
         return (string) $this->name;
     }
 }
-
