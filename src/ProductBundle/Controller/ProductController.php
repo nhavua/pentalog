@@ -44,11 +44,11 @@ class ProductController extends Controller
     public function newAction(Request $request)
     {
         $product = new Product();
+        $product = $this->addHiddenFieldsFromParams($product);
         $form = $this->createForm('ProductBundle\Form\ProductType', $product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $product = $this->addHiddenFieldsFromParams($product);
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
