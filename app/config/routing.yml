@@ -1,3 +1,7 @@
+pentalog_user:
+    resource: "@PentalogUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 product:
     resource: "@ProductBundle/Resources/config/routing.yml"
     prefix:   /
