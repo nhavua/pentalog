@@ -9,7 +9,7 @@ pentaloguser_show:
     methods:  GET
 
 pentaloguser_new:
-    path:     /new
+    path:     /create
     defaults: { _controller: "PentalogUserBundle:PentalogUser:new" }
     methods:  [GET, POST]
 

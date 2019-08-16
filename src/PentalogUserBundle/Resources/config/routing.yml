@@ -1,6 +1,6 @@
 pentalog_user_pentaloguser:
     resource: "@PentalogUserBundle/Resources/config/routing/pentaloguser.yml"
-    prefix:   /pentaloguser
+    prefix:   /user
 
 pentalog_user_homepage:
     path:     /
