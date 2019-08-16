@@ -1,7 +1,3 @@
 pentalog_user_pentaloguser:
     resource: "@PentalogUserBundle/Resources/config/routing/pentaloguser.yml"
     prefix:   /user
-
-pentalog_user_homepage:
-    path:     /
-    defaults: { _controller: PentalogUserBundle:Default:index }
