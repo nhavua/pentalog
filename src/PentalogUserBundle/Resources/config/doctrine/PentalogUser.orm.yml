@@ -1,0 +1,29 @@
+PentalogUserBundle\Entity\PentalogUser:
+    type: entity
+    table: null
+    repositoryClass: PentalogUserBundle\Repository\PentalogUserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        username:
+            type: string
+            length: '32'
+        password:
+            type: string
+            length: '64'
+        salt:
+            type: string
+            length: '64'
+            nullable: true
+        role:
+            type: string
+            length: 255
+        creationDate:
+            type: datetime
+        editionDate:
+            type: datetime
+    lifecycleCallbacks: {  }
