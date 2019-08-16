@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Pentalogusers list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Salt</th>
+                <th>Role</th>
+                <th>Creationdate</th>
+                <th>Editiondate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pentalogUser in pentalogUsers %}
+            <tr>
+                <td><a href="{{ path('pentaloguser_show', { 'id': pentalogUser.id }) }}">{{ pentalogUser.id }}</a></td>
+                <td>{{ pentalogUser.username }}</td>
+                <td>{{ pentalogUser.password }}</td>
+                <td>{{ pentalogUser.salt }}</td>
+                <td>{{ pentalogUser.role }}</td>
+                <td>{% if pentalogUser.creationDate %}{{ pentalogUser.creationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if pentalogUser.editionDate %}{{ pentalogUser.editionDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('pentaloguser_show', { 'id': pentalogUser.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('pentaloguser_edit', { 'id': pentalogUser.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pentaloguser_new') }}">Create a new pentalogUser</a>
+        </li>
+    </ul>
+{% endblock %}

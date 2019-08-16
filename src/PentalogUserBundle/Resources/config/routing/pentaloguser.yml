@@ -1,0 +1,24 @@
+pentaloguser_index:
+    path:     /
+    defaults: { _controller: "PentalogUserBundle:PentalogUser:index" }
+    methods:  GET
+
+pentaloguser_show:
+    path:     /{id}/show
+    defaults: { _controller: "PentalogUserBundle:PentalogUser:show" }
+    methods:  GET
+
+pentaloguser_new:
+    path:     /new
+    defaults: { _controller: "PentalogUserBundle:PentalogUser:new" }
+    methods:  [GET, POST]
+
+pentaloguser_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PentalogUserBundle:PentalogUser:edit" }
+    methods:  [GET, POST]
+
+pentaloguser_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PentalogUserBundle:PentalogUser:delete" }
+    methods:  DELETE
